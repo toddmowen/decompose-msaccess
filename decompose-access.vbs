@@ -36,15 +36,20 @@ End If
 Set oAccess = CreateObject("Access.Application")
 
 ' If database is unsigned and needs to show the "Security Warning" dialog,
-' then the following commands are needed to prevent the annoying
-' "half screen" behaviour.
+' then it appears in a window half the screen width, and unless we maximize
+' now then this annoying window size will be remembered next time Access
+' is run.
 oAccess.Visible = True
 oAccess.RunCommand acCmdAppMaximize
+oAccess.Visible = False
 
 oAccess.OpenCurrentDatabase sInputFile
 DecomposeDatabase oAccess, sOutputFolder
 oAccess.CloseCurrentDatabase
 oAccess.Quit 
+
+MsgBox sInputFile + " decomposed to folder " + sOutputFolder + ".", vbInformation, "Decompose Access"
+WScript.Quit()
 
 
 Function Usage()
@@ -103,12 +108,14 @@ Function ScriptCreate(oAccess, oScriptStream)
 	oScriptStream.WriteLine "Set oAccess = CreateObject(""Access.Application"")"
 	oScriptStream.WriteLine "oAccess.Visible = True"
 	oScriptStream.WriteLine "oAccess.RunCommand " & CStr(acCmdAppMaximize)
+	oScriptStream.WriteLine "oAccess.Visible = False"
 	oScriptStream.WriteLine "oAccess.OpenCurrentDatabase CreateObject(""WScript.Shell"").CurrentDirectory & ""\" & oAccess.CurrentProject.Name & """"
 	oScriptStream.WriteLine
 End Function
 
 
 Function ScriptClose(oAccess, oScriptStream)
+	oScriptStream.WriteLine "MsgBox ""Re-composed "" + oAccess.CurrentProject.FullName + ""."", vbInformation, ""Decompose Access"""
 	oScriptStream.WriteLine "oAccess.CloseCurrentDatabase"
 	oScriptStream.WriteLine "oAccess.Quit"
 	oScriptStream.WriteLine
