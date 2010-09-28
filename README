@@ -1,13 +1,14 @@
 Sorry, not yet ready for day-to-day use!
 
 Current features:
-* Decompose and compose MS-Access forms to and from text.
+* Decompose and compose MS-Access forms and queries to and from text.
+* Decompose and compose database properties (e.g. start-up settings).
 
 Planned features:
-* Decompose other MS-Access objects such as reports, modules,
-  queries (should be very easy, similar to forms).
+* Decompose other MS-Access objects such as reports, modules
+  (should be very easy, similar to forms and queries).
 * Decompose tables into two files each: one for schema and one
   for data (more challenging, because unfortunately dumping
   schema to SQL is not an option).
 * Decompose other configuration settings needed to reconstruct
-  the database, e.g. library references, start-up settings, etc.
+  the database, e.g. library references.
