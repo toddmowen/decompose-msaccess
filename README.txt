@@ -1,18 +1,16 @@
-Sorry, not yet ready for day-to-day use (but getting close)!
+Sorry, not yet ready for day-to-day use, but will be soon!
 
 Current features:
-* Decompose and compose MS-Access forms and queries to and from text.
-* Decompose and compose tables, using one XML file for the table
-  structure and one XML file for the data (if any).
-* Decompose and compose database properties (e.g. start-up settings).
-* Decompose and compose DLL references.
+* Decompose MS-Access forms, queries, reports, modules, macros
+  and data access pages to text files.
+* Decompose table structure and relationships to SQL files.
+* Decompose table data to XML files.
+* Decompose database properties (e.g. start-up settings).
+* Decompose DLL references.
 
 Planned features:
-* Decompose and compose table relations.
-* Decompose other MS-Access objects such as reports, modules
-  (should be very easy, similar to forms and queries).
+* Support for object permissions.
+* Support for ADP projects (currently only tested with MDB files).
 
 Limitations and known issues:
 * No support for code-signing or encryption.
-* Composing tables that contain medium to large OLE objects
-  (e.g. hundreds of kilobytes) is very slow.
